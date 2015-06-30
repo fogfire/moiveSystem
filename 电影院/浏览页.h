@@ -10,7 +10,6 @@ class 浏览页 : public CDialogEx
 public:
 	浏览页(CWnd* pParent = NULL);   // 标准构造函数
 	virtual ~浏览页();
-
 	virtual void OnFinalRelease();
 
 // 对话框数据

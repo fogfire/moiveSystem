@@ -77,8 +77,7 @@ END_INTERFACE_MAP()
 void ไฏภภาณ::OnBnClickedbtnm1()
 {
 	ShowWindow(SW_HIDE);
-	ื๙ฮปฯ๊ว้าณ zx1;
-	zx1.x = 1;
+	ื๙ฮปฯ๊ว้าณ zx1(1);
 	zx1.DoModal();
 	ShowWindow(SW_SHOW);
 }
@@ -87,8 +86,7 @@ void ไฏภภาณ::OnBnClickedbtnm1()
 void ไฏภภาณ::OnBnClickedbtnm2()
 {
 	ShowWindow(SW_HIDE);
-	ื๙ฮปฯ๊ว้าณ zx2;
-	zx2.x = 2;
+	ื๙ฮปฯ๊ว้าณ zx2(1);
 	zx2.DoModal();
 	ShowWindow(SW_SHOW);
 }
@@ -97,8 +95,7 @@ void ไฏภภาณ::OnBnClickedbtnm2()
 void ไฏภภาณ::OnBnClickedbtnm3()
 {
 	ShowWindow(SW_HIDE);
-	ื๙ฮปฯ๊ว้าณ zx3;
-	zx3.x = 3;
+	ื๙ฮปฯ๊ว้าณ zx3(1);
 	zx3.DoModal();
 	ShowWindow(SW_SHOW);
 }

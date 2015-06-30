@@ -9,7 +9,8 @@
 void init();
 void load();
 void save();
-char str[7][7][16];
+char str[3][5][16];
+char fileDizhi[20];
 
 // 座位详情页 对话框
 
@@ -21,9 +22,25 @@ IMPLEMENT_DYNAMIC(座位详情页, CDialogEx)
 	, xuanWei(0)
 	, changCi(0)
 {
-
 }
 
+座位详情页::座位详情页(int a)
+: CDialogEx(座位详情页::IDD, NULL)
+, diDian(0)
+, xuanWei(0)
+, changCi(0)
+{
+	x = a;
+	switch (x)
+	{
+	case 1: strcpy(fileDizhi, "1.res"); break;
+	case 2: strcpy(fileDizhi, "2.res"); break;
+	case 3: strcpy(fileDizhi, "3.res"); break;
+	default:
+		EndDialog(0);
+		break;
+	}
+}
 座位详情页::~座位详情页()
 {
 }
@@ -74,22 +91,22 @@ void 座位详情页::OnCommMscomm1()
 	//OnBnClickednextmoive();
 	switch (rxdata[0])
 	{
-	case 1: str[xuanWei][changCi - 1][0] = '1'; save(); load(); break;
-	case 2: str[xuanWei][changCi - 1][1] = '1'; save(); load(); break;
-	case 3: str[xuanWei][changCi - 1][2] = '1'; save(); load(); break;
-	case 4: str[xuanWei][changCi - 1][3] = '1'; save(); load(); break;
-	case 5: str[xuanWei][changCi - 1][4] = '1'; save(); load(); break;
-	case 6: str[xuanWei][changCi - 1][5] = '1'; save(); load();  break;
-	case 7: str[xuanWei][changCi - 1][6] = '1'; save(); load();  break;
-	case 8: str[xuanWei][changCi - 1][7] = '1'; save(); load(); break;
-	case 9: str[xuanWei][changCi - 1][8] = '1'; save(); load();  break;
-	case 10: str[xuanWei - 1][changCi - 1][9] = '1'; save(); load(); break;
-	case 11: str[xuanWei - 1][changCi - 1][10] = '1'; save(); load();  break;
-	case 12: str[xuanWei - 1][changCi - 1][11] = '1'; save(); load();  break;
-	case 13: str[xuanWei - 1][changCi - 1][12] = '1'; save(); load(); break;
-	case 14: str[xuanWei - 1][changCi - 1][13] = '1'; save(); load();  break;
-	case 15: str[xuanWei - 1][changCi - 1][14] = '1'; save(); load();  break;
-	case 16: str[xuanWei - 1][changCi - 1][15] = '1'; save(); load(); break;
+	case 1: str[xuanWei][changCi][0] = '1'; save(); load(); break;
+	case 2: str[xuanWei][changCi][1] = '1'; save(); load(); break;
+	case 3: str[xuanWei][changCi][2] = '1'; save(); load(); break;
+	case 4: str[xuanWei][changCi][3] = '1'; save(); load(); break;
+	case 5: str[xuanWei][changCi][4] = '1'; save(); load(); break;
+	case 6: str[xuanWei][changCi][5] = '1'; save(); load();  break;
+	case 7: str[xuanWei][changCi][6] = '1'; save(); load();  break;
+	case 8: str[xuanWei][changCi][7] = '1'; save(); load(); break;
+	case 9: str[xuanWei][changCi][8] = '1'; save(); load();  break;
+	case 10: str[xuanWei][changCi][9] = '1'; save(); load(); break;
+	case 11: str[xuanWei][changCi][10] = '1'; save(); load();  break;
+	case 12: str[xuanWei][changCi][11] = '1'; save(); load();  break;
+	case 13: str[xuanWei][changCi][12] = '1'; save(); load(); break;
+	case 14: str[xuanWei][changCi][13] = '1'; save(); load();  break;
+	case 15: str[xuanWei][changCi][14] = '1'; save(); load();  break;
+	case 16: str[xuanWei][changCi][15] = '1'; save(); load(); break;
 	case 17: break;
 	case 18: break;
 	case 19: break;
@@ -121,11 +138,11 @@ void init()
 void load()
 {
 	int i, j;
-	FILE *fp = fopen("test.txt", "r");
+	FILE *fp = fopen(fileDizhi, "r");
 	if (!fp)
 	{
 		init();
-		fp = fopen("test.txt", "r");
+		fp = fopen(fileDizhi, "r");
 	}
 
 	for (i = 0; i<7; i++)
@@ -145,7 +162,7 @@ void load()
 void save()
 {
 	int i, j, k;
-	FILE *fp = fopen("test.txt", "w");
+	FILE *fp = fopen(fileDizhi, "w");
 	for (i = 0; i<7; i++)
 	{
 		for (j = 0; j<7; j++)
@@ -162,3 +179,24 @@ void save()
 }
 
 
+//订票
+void 座位详情页::OnBnClickedButton2()
+{
+	UpdateData(TRUE);
+	str[xuanWei][changCi][xuanWei]='1';
+	OnBnClickedupdata();
+}
+
+//刷新
+void 座位详情页::OnBnClickedupdata()
+{
+	
+}
+
+//退票
+void 座位详情页::OnBnClickedButton3()
+{
+	UpdateData(TRUE);
+	str[xuanWei][changCi][xuanWei] = '2';
+	OnBnClickedupdata();
+}

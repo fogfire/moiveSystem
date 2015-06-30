@@ -9,9 +9,11 @@ class 座位详情页 : public CDialogEx
 	DECLARE_DYNAMIC(座位详情页)
 
 public:
-	座位详情页(CWnd* pParent = NULL);   // 标准构造函数
+	int  x;
+	座位详情页(CWnd* pParent = NULL);
+	座位详情页(int a);
 	virtual ~座位详情页();
-	int x;
+	
 // 对话框数据
 	enum { IDD = IDD_DIALOG2 };
 
@@ -27,4 +29,8 @@ public:
 	void OnCommMscomm1();
 	afx_msg void OnCbnSelchangeCombo1();
 	int changCi;
+	//DECLARE_MESSAGE_MAP()
+	afx_msg void OnBnClickedButton2();
+	afx_msg void OnBnClickedupdata();
+	afx_msg void OnBnClickedButton3();
 };

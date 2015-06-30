@@ -9,6 +9,7 @@
 #include "π‹¿Ì“≥.h"
 #include "‰Ø¿¿“≥.h"
 bool isTrue;
+int x;
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
