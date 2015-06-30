@@ -69,6 +69,7 @@ BEGIN_MESSAGE_MAP(C电影院Dlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON1, &C电影院Dlg::OnBnClickedButton1)
 	ON_BN_CLICKED(IDC_BUTTON2, &C电影院Dlg::OnBnClickedButton2)
+	ON_BN_CLICKED(IDC_btnOut, &C电影院Dlg::OnBnClickedbtnout)
 END_MESSAGE_MAP()
 
 
@@ -161,8 +162,10 @@ HCURSOR C电影院Dlg::OnQueryDragIcon()
 void C电影院Dlg::OnBnClickedButton1()//管理按钮
 {
 	管理页 manage;
+	this->ShowWindow(SW_HIDE);
 	int managef=manage.DoModal();
-	if (managef == IDOK)
+	this->ShowWindow(SW_SHOW);
+/*	if (managef == IDOK)
 	{
 		isTrue = TRUE;
 	}
@@ -170,7 +173,7 @@ void C电影院Dlg::OnBnClickedButton1()//管理按钮
 	{
 		isTrue = FALSE;
 	}
-
+	
 	if (isTrue)
 	{
 		this->btnLiulan.DestroyWindow();
@@ -178,6 +181,7 @@ void C电影院Dlg::OnBnClickedButton1()//管理按钮
 		btnManage.DestroyWindow();
 		delete btnManage;
 	}
+	*/
 }
 
 
@@ -185,7 +189,16 @@ void C电影院Dlg::OnBnClickedButton2()//浏览页
 {
 	// TODO:  在此添加控件通知处理程序代码
 	浏览页 view;
+	this->ShowWindow(SW_HIDE);
 	view.DoModal();
+	this->ShowWindow(SW_SHOW);
+	
 }
 
 
+
+
+void C电影院Dlg::OnBnClickedbtnout()
+{
+	exit(0);
+}

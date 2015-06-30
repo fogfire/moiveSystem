@@ -5,6 +5,7 @@
 #include "µÁ”∞‘∫.h"
 #include "‰Ø¿¿“≥.h"
 #include "afxdialogex.h"
+#include"◊˘ŒªœÍ«È“≥.h"
 
 
 // ‰Ø¿¿“≥ ∂‘ª∞øÚ
@@ -49,6 +50,9 @@ void ‰Ø¿¿“≥::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(‰Ø¿¿“≥, CDialogEx)
+	ON_BN_CLICKED(IDC_btnm1, &‰Ø¿¿“≥::OnBnClickedbtnm1)
+	ON_BN_CLICKED(IDC_btnm2, &‰Ø¿¿“≥::OnBnClickedbtnm2)
+	ON_BN_CLICKED(IDC_btnm3, &‰Ø¿¿“≥::OnBnClickedbtnm3)
 END_MESSAGE_MAP()
 
 BEGIN_DISPATCH_MAP(‰Ø¿¿“≥, CDialogEx)
@@ -68,3 +72,33 @@ END_INTERFACE_MAP()
 
 
 // ‰Ø¿¿“≥ œ˚œ¢¥¶¿Ì≥Ã–Ú
+
+
+void ‰Ø¿¿“≥::OnBnClickedbtnm1()
+{
+	ShowWindow(SW_HIDE);
+	◊˘ŒªœÍ«È“≥ zx1;
+	zx1.x = 1;
+	zx1.DoModal();
+	ShowWindow(SW_SHOW);
+}
+
+
+void ‰Ø¿¿“≥::OnBnClickedbtnm2()
+{
+	ShowWindow(SW_HIDE);
+	◊˘ŒªœÍ«È“≥ zx2;
+	zx2.x = 2;
+	zx2.DoModal();
+	ShowWindow(SW_SHOW);
+}
+
+
+void ‰Ø¿¿“≥::OnBnClickedbtnm3()
+{
+	ShowWindow(SW_HIDE);
+	◊˘ŒªœÍ«È“≥ zx3;
+	zx3.x = 3;
+	zx3.DoModal();
+	ShowWindow(SW_SHOW);
+}

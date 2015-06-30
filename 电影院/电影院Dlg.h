@@ -30,4 +30,5 @@ public:
 	afx_msg void OnBnClickedButton2();
 	CButton btnManage;
 	CButton btnLiulan;
+	afx_msg void OnBnClickedbtnout();
 };

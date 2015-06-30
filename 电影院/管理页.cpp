@@ -41,6 +41,7 @@ void 管理页::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(管理页, CDialogEx)
 	ON_BN_CLICKED(IDC_onLoad, &管理页::OnBnClickedonload)
+	ON_BN_CLICKED(IDC_btnGToS, &管理页::OnBnClickedbtngtos)
 END_MESSAGE_MAP()
 
 BEGIN_DISPATCH_MAP(管理页, CDialogEx)
@@ -64,8 +65,13 @@ END_INTERFACE_MAP()
 
 void 管理页::OnBnClickedonload()
 {
-
 	MessageBox(_T("登陆成功！"));
 	CDialog::OnOK();
-	// TODO:  在此添加控件通知处理程序代码
+}
+
+
+
+void 管理页::OnBnClickedbtngtos()
+{
+	EndDialog(2);
 }

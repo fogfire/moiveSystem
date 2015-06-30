@@ -24,4 +24,5 @@ protected:
 	DECLARE_INTERFACE_MAP()
 public:
 	afx_msg void OnBnClickedonload();
+	afx_msg void OnBnClickedbtngtos();
 };

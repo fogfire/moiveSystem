@@ -26,4 +26,7 @@ public:
 	CString mv1;
 	CString mv2;
 	CString mv3;
+	afx_msg void OnBnClickedbtnm1();
+	afx_msg void OnBnClickedbtnm2();
+	afx_msg void OnBnClickedbtnm3();
 };

@@ -101,19 +101,23 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="mscomm1.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="座位详情页.h" />
     <ClInclude Include="浏览页.h" />
     <ClInclude Include="电影院.h" />
     <ClInclude Include="电影院Dlg.h" />
     <ClInclude Include="管理页.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="mscomm1.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="座位详情页.cpp" />
     <ClCompile Include="浏览页.cpp" />
     <ClCompile Include="电影院.cpp" />
     <ClCompile Include="电影院Dlg.cpp" />
@@ -123,7 +127,6 @@
     <ResourceCompile Include="电影院.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\welcome.bmp" />
     <Image Include="res\welcome1.bmp" />
     <Image Include="res\电影院.ico" />
   </ItemGroup>
@@ -132,7 +135,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties RESOURCE_FILE="电影院.rc" />
+      <UserProperties _x007B_648A5600-2C6E-101B-82B6-000000000014_x007D_="CMscomm1" RESOURCE_FILE="电影院.rc" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
