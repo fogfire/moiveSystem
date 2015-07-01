@@ -202,14 +202,10 @@ void C电影院Dlg::OnBnClickedButton2()//浏览页
 	
 }
 
-
-
-
 void C电影院Dlg::OnBnClickedbtnout()
 {
 	exit(0);
 }
-
 
 void C电影院Dlg::OnBnClickedButton3()
 {

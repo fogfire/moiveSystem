@@ -1,6 +1,5 @@
 // 座位详情页.cpp : 实现文件
 //
-
 #include "stdafx.h"
 #include "电影院.h"
 #include "座位详情页.h"
@@ -12,9 +11,7 @@ void save();
 char str[3][5][16];
 char fileDizhi[20];
 // 座位详情页 对话框
-
 IMPLEMENT_DYNAMIC(座位详情页, CDialogEx)
-
 座位详情页::座位详情页(CWnd* pParent /*=NULL*/)
 	: CDialogEx(座位详情页::IDD, pParent)
 	, diDian(0)
@@ -22,7 +19,6 @@ IMPLEMENT_DYNAMIC(座位详情页, CDialogEx)
 	, changCi(0)
 {
 }
-
 座位详情页::座位详情页(int a)
 : CDialogEx(座位详情页::IDD, NULL)
 , diDian(0)
@@ -43,7 +39,6 @@ IMPLEMENT_DYNAMIC(座位详情页, CDialogEx)
 座位详情页::~座位详情页()
 {
 }
-
 void 座位详情页::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
@@ -71,32 +66,20 @@ void 座位详情页::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_w26, t44);
 	*/
 }
-
-
-
-
 // 座位详情页 消息处理程序
 BEGIN_EVENTSINK_MAP(座位详情页, CDialogEx)
 	ON_EVENT(座位详情页, IDC_MSCOMM1, 1, 座位详情页::OnCommMscomm1, VTS_NONE)
 END_EVENTSINK_MAP()
-
-
 void 座位详情页::OnCommMscomm1()
 {
 	VARIANT input1;
-
 	BYTE rxdata[2048];  //数据接收缓冲区，用于存放接受到的数据
-
 	COleSafeArray safearray1;
-
 	if (comKou.get_CommEvent() == 2)  //判断是否为串口数据到达事件
 	{
 		input1 = comKou.get_Input(); //读取串口内容
-
 		safearray1 = input1;  //进行数据安全性转换
-
 		long dataLength = safearray1.GetOneDimSize();  //读取数据的字节长度
-
 		for (long k = 0; k < dataLength; k++)  //依次读取每一个字节
 			safearray1.GetElement(&k, rxdata + k);//第一个参数是开始的数组指针，第二个是存放的数组指针
 	}
@@ -143,9 +126,7 @@ void init()
 		}
 	}
 	save();
-
 }
-
 // ****************************************************************
 // 加载文件数据到内存
 //*****************************************************************
@@ -158,7 +139,6 @@ void load()
 		init();
 		fp = fopen(fileDizhi, "r");
 	}
-
 	for (i = 0; i<3; i++)
 	{
 		for (j = 0; j<5; j++)
@@ -169,7 +149,6 @@ void load()
 	}
 	fclose(fp);
 }
-
 // ****************************************************************
 // 将所有的数据写入文件，这个操作将在任何一个内存数据更新时去调用。
 // ****************************************************************
@@ -191,18 +170,13 @@ void save()
 	}
 	fclose(fp);
 }
-
-
 BEGIN_MESSAGE_MAP(座位详情页, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON1, &座位详情页::OnBnClickedButton1)
 	ON_BN_CLICKED(IDC_BUTTON5, &座位详情页::OnBnClickedButton5)
 	ON_BN_CLICKED(IDC_BUTTON4, &座位详情页::OnBnClickedButton4)
 END_MESSAGE_MAP()
-
-
 void 座位详情页::OnBnClickedButton1()
 {	
-	
 	int k;
 	for (k = 0; k < 16; k++)
 	{
@@ -211,21 +185,16 @@ void 座位详情页::OnBnClickedButton1()
 		else
 		{
 			//这里添加显示座位的语句。
-		}
-		
+		}	
 	}
 	UpdateData(FALSE);
 }
-
-
 void 座位详情页::OnBnClickedButton5()//tui
 {
 	UpdateData(TRUE);
 	str[xuanWei][changCi][xuanWei] = '2';
 	OnBnClickedButton1();
 }
-
-
 void 座位详情页::OnBnClickedButton4()//ding
 {
 	UpdateData(TRUE);
