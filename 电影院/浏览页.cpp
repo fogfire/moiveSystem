@@ -127,6 +127,9 @@ BEGIN_MESSAGE_MAP(浏览页, CDialogEx)
 	ON_BN_CLICKED(IDC_btnm1, &浏览页::OnBnClickedbtnm1)
 	ON_BN_CLICKED(IDC_btnm2, &浏览页::OnBnClickedbtnm2)
 	ON_BN_CLICKED(IDC_btnm3, &浏览页::OnBnClickedbtnm3)
+	ON_BN_CLICKED(IDC_BUTTON1, &浏览页::OnBnClickedButton1)
+	ON_BN_CLICKED(IDC_BUTTON2, &浏览页::OnBnClickedButton2)
+	ON_BN_CLICKED(IDC_BUTTON3, &浏览页::OnBnClickedButton3)
 END_MESSAGE_MAP()
 BEGIN_DISPATCH_MAP(浏览页, CDialogEx)
 END_DISPATCH_MAP()
@@ -160,4 +163,94 @@ void 浏览页::OnBnClickedbtnm3()
 	座位详情页 zx3(3);
 	zx3.DoModal();
 	ShowWindow(SW_SHOW);
+}
+
+
+void 浏览页::OnBnClickedButton1()//查看预告1
+{
+	CString CmdLine = L"explorer.exe http://v.youku.com/v_show/id_XMTI3NDY2MDgyNA";
+	LPTSTR Cmd = (LPTSTR)(LPCTSTR)CmdLine;//类型转换,详见MSDN
+	STARTUPINFO si = { sizeof(si) }; //保存进程的启动信息
+	PROCESS_INFORMATION pi;   //保存进程的相关信息
+	si.dwFlags = STARTF_USESHOWWINDOW;
+	si.wShowWindow = 1; //1窗口显示,0表示后台运行
+	BOOL bRet = ::CreateProcess  //调用创建进程函数
+		(
+		NULL,
+		Cmd,
+		NULL,
+		NULL,
+		FALSE,
+		CREATE_NEW_CONSOLE,
+		NULL,
+		NULL,
+		&si,
+		&pi
+		);
+	if (bRet)
+	{
+		::CloseHandle(pi.hProcess); //关闭进程句柄
+		::CloseHandle(pi.hThread);  //关闭主线程句柄
+	}
+}
+
+
+void 浏览页::OnBnClickedButton2()
+{
+
+	CString CmdLine = L"explorer.exe http://http://v.youku.com/v_show/id_XMTI1OTg5MDA3Ng";
+	LPTSTR Cmd = (LPTSTR)(LPCTSTR)CmdLine;//类型转换,详见MSDN
+	STARTUPINFO si = { sizeof(si) }; //保存进程的启动信息
+	PROCESS_INFORMATION pi;   //保存进程的相关信息
+	si.dwFlags = STARTF_USESHOWWINDOW;
+	si.wShowWindow = 1; //1窗口显示,0表示后台运行
+	BOOL bRet = ::CreateProcess  //调用创建进程函数
+		(
+		NULL,
+		Cmd,
+		NULL,
+		NULL,
+		FALSE,
+		CREATE_NEW_CONSOLE,
+		NULL,
+		NULL,
+		&si,
+		&pi
+		);
+	if (bRet)
+	{
+		::CloseHandle(pi.hProcess); //关闭进程句柄
+		::CloseHandle(pi.hThread);  //关闭主线程句柄
+	}
+
+}
+
+
+void 浏览页::OnBnClickedButton3()
+{
+	// TODO:  在此添加控件通知处理程序代码
+	CString CmdLine = L"explorer.exe http://v.youku.com/v_show/id_XMTI3MzEzMTU0NA";
+	LPTSTR Cmd = (LPTSTR)(LPCTSTR)CmdLine;//类型转换,详见MSDN
+	STARTUPINFO si = { sizeof(si) }; //保存进程的启动信息
+	PROCESS_INFORMATION pi;   //保存进程的相关信息
+	si.dwFlags = STARTF_USESHOWWINDOW;
+	si.wShowWindow = 1; //1窗口显示,0表示后台运行
+	BOOL bRet = ::CreateProcess  //调用创建进程函数
+		(
+		NULL,
+		Cmd,
+		NULL,
+		NULL,
+		FALSE,
+		CREATE_NEW_CONSOLE,
+		NULL,
+		NULL,
+		&si,
+		&pi
+		);
+	if (bRet)
+	{
+		::CloseHandle(pi.hProcess); //关闭进程句柄
+		::CloseHandle(pi.hThread);  //关闭主线程句柄
+	}
 }

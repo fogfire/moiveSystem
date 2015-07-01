@@ -208,6 +208,17 @@ void 座位详情页::OnBnClickedButton1()
 		if (x==3)
 			strcpy(fileDizhi, "res\\mv3.ini");
 	}
+	load();
+	if (flag == 1)
+	{
+		//flag++;
+		if (x = 1)
+			strcpy(fileDizhi, "res\\mv1.ini");
+		if (x == 2)
+			strcpy(fileDizhi, "res\\mv2.ini");
+		if (x == 3)
+			strcpy(fileDizhi, "res\\mv3.ini");
+	}
 	int k;
 	for (k = 0; k < 16; k++)
 	{
