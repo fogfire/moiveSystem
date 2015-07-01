@@ -18,7 +18,6 @@ IMPLEMENT_DYNAMIC(浏览页, CDialogEx)
 	, mv3(_T(""))
 {
 	char temp[200];
-	int i=0;
 	FILE *fp;
 	if (!(fp = fopen("res//1.ini", "r")))
 		mv1 = "无法读取到影片详情。。。";
@@ -50,19 +49,55 @@ IMPLEMENT_DYNAMIC(浏览页, CDialogEx)
 		mv2 = "无法读取到影片详情。。。";
 	else
 	{
-		while ((fscanf(fp, "%c", temp[i++])) != EOF);
-		mv2 = temp;
-		i = 0;
+
 		fclose(fp);
+		LONGLONG lOff = 0;         // 文件指针的偏移量，也是读取到的数据的总字节数   
+		CFile file(_T("res//2.ini"), CFile::modeRead);
+		while (true)
+		{
+			// 以文件开头为基准，移动文件指针到lOff的位置   
+			file.Seek(lOff, CFile::begin);
+			// 读取100个字节的数据到存放读取数据的缓存的readBuffer + lOff位置处   
+			int nRet = file.Read(temp + lOff, 1);
+			// 根据实际读取的字节数，增加文件指针的移动量   
+			lOff += nRet;
+			// 如果读取数据时返回值小于指定的100，说明已到文件尾，跳出循环   
+			if (nRet < 1)
+			{
+				temp[lOff] = '\0';
+				break;
+			}
+		}
+		// 关闭文件   
+		file.Close();
+		mv2 = temp;
 	}
 	if (!(fp = fopen("res//3.ini", "r")))
 		mv3 = "无法读取到影片详情。。。";
 	else
 	{
-		while ((fscanf(fp, "%c", temp[i++])) != EOF);
-		mv3 = temp;
-		i = 0;
+		
 		fclose(fp);
+		LONGLONG lOff = 0;         // 文件指针的偏移量，也是读取到的数据的总字节数   
+		CFile file(_T("res//1.ini"),  CFile::modeRead);
+		while (true)
+		{
+			// 以文件开头为基准，移动文件指针到lOff的位置   
+			file.Seek(lOff, CFile::begin);
+			// 读取100个字节的数据到存放读取数据的缓存的readBuffer + lOff位置处   
+			int nRet = file.Read(temp + lOff, 1);
+			// 根据实际读取的字节数，增加文件指针的移动量   
+			lOff += nRet;
+			// 如果读取数据时返回值小于指定的100，说明已到文件尾，跳出循环   
+			if (nRet < 1)
+			{
+				temp[lOff]='\0';
+				break;
+			}
+		}
+		// 关闭文件   
+		file.Close();
+		mv3=temp;
 	}
 	EnableAutomation();
 
