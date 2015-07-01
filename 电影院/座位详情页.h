@@ -11,6 +11,7 @@ class ×ùÎ»ÏêÇéÒ³ : public CDialogEx
 
 public:
 	int  x;
+	int flag;
 	×ùÎ»ÏêÇéÒ³(CWnd* pParent = NULL);
 	×ùÎ»ÏêÇéÒ³(int a);
 	virtual ~×ùÎ»ÏêÇéÒ³();
@@ -50,4 +51,5 @@ public:
 	afx_msg void OnBnClickedButton1();
 	afx_msg void OnBnClickedButton5();
 	afx_msg void OnBnClickedButton4();
+	afx_msg void OnBnClickedButton2();
 };

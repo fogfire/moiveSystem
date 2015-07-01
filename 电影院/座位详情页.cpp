@@ -1,8 +1,8 @@
-// ×ùÎ»ÏêÇéÒ³.cpp : ÊµÏÖÎÄ¼ş
+ï»¿// åº§ä½è¯¦æƒ…é¡µ.cpp : å®ç°æ–‡ä»¶
 //
 #include "stdafx.h"
-#include "µçÓ°Ôº.h"
-#include "×ùÎ»ÏêÇéÒ³.h"
+#include "ç”µå½±é™¢.h"
+#include "åº§ä½è¯¦æƒ…é¡µ.h"
 #include "afxdialogex.h"
 #pragma warning(disable:4996)
 void init();
@@ -10,36 +10,28 @@ void load();
 void save();
 char str[3][5][16];
 char fileDizhi[20];
-// ×ùÎ»ÏêÇéÒ³ ¶Ô»°¿ò
-IMPLEMENT_DYNAMIC(×ùÎ»ÏêÇéÒ³, CDialogEx)
-×ùÎ»ÏêÇéÒ³::×ùÎ»ÏêÇéÒ³(CWnd* pParent /*=NULL*/)
-	: CDialogEx(×ùÎ»ÏêÇéÒ³::IDD, pParent)
+// åº§ä½è¯¦æƒ…é¡µ å¯¹è¯æ¡†
+IMPLEMENT_DYNAMIC(åº§ä½è¯¦æƒ…é¡µ, CDialogEx)
+åº§ä½è¯¦æƒ…é¡µ::åº§ä½è¯¦æƒ…é¡µ(CWnd* pParent /*=NULL*/)
+	: CDialogEx(åº§ä½è¯¦æƒ…é¡µ::IDD, pParent)
 	, diDian(0)
-	, xuanWei(0)
+	, xuanWei()
 	, changCi(0)
 {
 }
-×ùÎ»ÏêÇéÒ³::×ùÎ»ÏêÇéÒ³(int a)
-: CDialogEx(×ùÎ»ÏêÇéÒ³::IDD, NULL)
+åº§ä½è¯¦æƒ…é¡µ::åº§ä½è¯¦æƒ…é¡µ(int a)
+: CDialogEx(åº§ä½è¯¦æƒ…é¡µ::IDD, NULL)
 , diDian(0)
-, xuanWei(0)
+, xuanWei(1)
 , changCi(0)
 {
 	x = a;
-	switch (x)
-	{
-	case 1: strcpy(fileDizhi, "res\\1.res"); break;
-	case 2: strcpy(fileDizhi, "res\\2.res"); break;
-	case 3: strcpy(fileDizhi, "res\\3.res"); break;
-	default:
-		EndDialog(0);
-		break;
-	}
+	flag = 1;
 }
-×ùÎ»ÏêÇéÒ³::~×ùÎ»ÏêÇéÒ³()
+åº§ä½è¯¦æƒ…é¡µ::~åº§ä½è¯¦æƒ…é¡µ()
 {
 }
-void ×ùÎ»ÏêÇéÒ³::DoDataExchange(CDataExchange* pDX)
+void åº§ä½è¯¦æƒ…é¡µ::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_CBIndex(pDX, IDC_COMBO1, diDian);
@@ -66,49 +58,73 @@ void ×ùÎ»ÏêÇéÒ³::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_w26, t44);
 	*/
 }
-// ×ùÎ»ÏêÇéÒ³ ÏûÏ¢´¦Àí³ÌĞò
-BEGIN_EVENTSINK_MAP(×ùÎ»ÏêÇéÒ³, CDialogEx)
-	ON_EVENT(×ùÎ»ÏêÇéÒ³, IDC_MSCOMM1, 1, ×ùÎ»ÏêÇéÒ³::OnCommMscomm1, VTS_NONE)
+// åº§ä½è¯¦æƒ…é¡µ æ¶ˆæ¯å¤„ç†ç¨‹åº
+BEGIN_EVENTSINK_MAP(åº§ä½è¯¦æƒ…é¡µ, CDialogEx)
+	ON_EVENT(åº§ä½è¯¦æƒ…é¡µ, IDC_MSCOMM1, 1, åº§ä½è¯¦æƒ…é¡µ::OnCommMscomm1, VTS_NONE)
 END_EVENTSINK_MAP()
-void ×ùÎ»ÏêÇéÒ³::OnCommMscomm1()
+void åº§ä½è¯¦æƒ…é¡µ::OnCommMscomm1()
 {
 	VARIANT input1;
-	BYTE rxdata[2048];  //Êı¾İ½ÓÊÕ»º³åÇø£¬ÓÃÓÚ´æ·Å½ÓÊÜµ½µÄÊı¾İ
+	BYTE rxdata[2048];  //æ•°æ®æ¥æ”¶ç¼“å†²åŒºï¼Œç”¨äºå­˜æ”¾æ¥å—åˆ°çš„æ•°æ®
 	COleSafeArray safearray1;
-	if (comKou.get_CommEvent() == 2)  //ÅĞ¶ÏÊÇ·ñÎª´®¿ÚÊı¾İµ½´ïÊÂ¼ş
+	if (comKou.get_CommEvent() == 2)  //åˆ¤æ–­æ˜¯å¦ä¸ºä¸²å£æ•°æ®åˆ°è¾¾äº‹ä»¶
 	{
-		input1 = comKou.get_Input(); //¶ÁÈ¡´®¿ÚÄÚÈİ
-		safearray1 = input1;  //½øĞĞÊı¾İ°²È«ĞÔ×ª»»
-		long dataLength = safearray1.GetOneDimSize();  //¶ÁÈ¡Êı¾İµÄ×Ö½Ú³¤¶È
-		for (long k = 0; k < dataLength; k++)  //ÒÀ´Î¶ÁÈ¡Ã¿Ò»¸ö×Ö½Ú
-			safearray1.GetElement(&k, rxdata + k);//µÚÒ»¸ö²ÎÊıÊÇ¿ªÊ¼µÄÊı×éÖ¸Õë£¬µÚ¶ş¸öÊÇ´æ·ÅµÄÊı×éÖ¸Õë
+		input1 = comKou.get_Input(); //è¯»å–ä¸²å£å†…å®¹
+		safearray1 = input1;  //è¿›è¡Œæ•°æ®å®‰å…¨æ€§è½¬æ¢
+		long dataLength = safearray1.GetOneDimSize();  //è¯»å–æ•°æ®çš„å­—èŠ‚é•¿åº¦
+		for (long k = 0; k < dataLength; k++)  //ä¾æ¬¡è¯»å–æ¯ä¸€ä¸ªå­—èŠ‚
+			safearray1.GetElement(&k, rxdata + k);//ç¬¬ä¸€ä¸ªå‚æ•°æ˜¯å¼€å§‹çš„æ•°ç»„æŒ‡é’ˆï¼Œç¬¬äºŒä¸ªæ˜¯å­˜æ”¾çš„æ•°ç»„æŒ‡é’ˆ
 	}
-	//if (rxdata[0] == 0x01)//0x01¾ÍÊÇÉÏÒ»Ò³¡£
-	// MessageBox(_T("µÆÒÑ¿ª"));
+	//if (rxdata[0] == 0x01)//0x01å°±æ˜¯ä¸Šä¸€é¡µã€‚
+	// MessageBox(_T("ç¯å·²å¼€"));
 	//	OnBnClickedpremoive();
-	//else if (rxdata[0] == 0x02)//0x02±íÊ¾ÏÂÒ»Ò³¡£
-	// MessageBox(_T("µÆÒÑ¹Ø"));
+	//else if (rxdata[0] == 0x02)//0x02è¡¨ç¤ºä¸‹ä¸€é¡µã€‚
+	// MessageBox(_T("ç¯å·²å…³"));
 	//OnBnClickednextmoive();
+	UpdateData(TRUE);
+	if (flag == 1)
+	{
+		if (x = 1)
+			strcpy(fileDizhi, "res\\mv1.ini");
+		if (x == 2)
+			strcpy(fileDizhi, "res\\mv2.ini");
+		if (x == 3)
+			strcpy(fileDizhi, "res\\mv3.ini");
+	}
+	load();
+	if (flag == 1)
+	{
+		if (x = 1)
+			strcpy(fileDizhi, "res\\mv1.ini");
+		if (x == 2)
+			strcpy(fileDizhi, "res\\mv2.ini");
+		if (x == 3)
+			strcpy(fileDizhi, "res\\mv3.ini");
+	}
 	switch (rxdata[0])
 	{
 	case 0: break;
-	case 1: str[xuanWei][changCi][0] = '1'; save(); load(); break;
-	case 2: str[xuanWei][changCi][1] = '1'; save(); load(); break;
-	case 3: str[xuanWei][changCi][2] = '1'; save(); load(); break;
-	case 4: str[xuanWei][changCi][3] = '1'; save(); load(); break;
-	case 5: str[xuanWei][changCi][4] = '1'; save(); load(); break;
-	case 6: str[xuanWei][changCi][5] = '1'; save(); load();  break;
-	case 7: str[xuanWei][changCi][6] = '1'; save(); load();  break;
-	case 8: str[xuanWei][changCi][7] = '1'; save(); load(); break;
-	case 9: str[xuanWei][changCi][8] = '1'; save(); load();  break;
-	case 10: str[xuanWei][changCi][9] = '1'; save(); load(); break;
-	case 11: str[xuanWei][changCi][10] = '1'; save(); load();  break;
-	case 12: str[xuanWei][changCi][11] = '1'; save(); load();  break;
-	case 13: str[xuanWei][changCi][12] = '1'; save(); load(); break;
-	case 14: str[xuanWei][changCi][13] = '1'; save(); load();  break;
-	case 15: str[xuanWei][changCi][14] = '1'; save(); load();  break;
-	case 16: str[xuanWei][changCi][15] = '1'; save(); load(); break;
-	default: MessageBox(_T("½ÓÊÕµ½Òì³£Êı¾İ")); break;
+	case 1: str[diDian][changCi][0] = (str[diDian][changCi][0] == '1' ? 't' : '1'); 
+		save(); 
+		load(); 
+		OnBnClickedButton1(); 
+		break;
+	case 2: str[diDian][changCi][1] = (str[diDian][changCi][1] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
+	case 3: str[diDian][changCi][2] = (str[diDian][changCi][2] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
+	case 4: str[diDian][changCi][3] = (str[diDian][changCi][3] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
+	case 5: str[diDian][changCi][4] = (str[diDian][changCi][4] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
+	case 6: str[diDian][changCi][5] = (str[diDian][changCi][5] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1();  break;
+	case 7: str[diDian][changCi][6] = (str[diDian][changCi][6] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1();  break;
+	case 8: str[diDian][changCi][7] = (str[diDian][changCi][7] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
+	case 9: str[diDian][changCi][8] = (str[diDian][changCi][8] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
+	case 10: str[diDian][changCi][9] = (str[diDian][changCi][9] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
+	case 11: str[diDian][changCi][10] = (str[diDian][changCi][10] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
+	case 12: str[diDian][changCi][11] = (str[diDian][changCi][11] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
+	case 13: str[diDian][changCi][12] = (str[diDian][changCi][13] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
+	case 14: str[diDian][changCi][13] = (str[diDian][changCi][14] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
+	case 15: str[diDian][changCi][14] = (str[diDian][changCi][15] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
+	case 16: str[diDian][changCi][15] = (str[diDian][changCi][16] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
+	default: MessageBox(_T("æ¥æ”¶åˆ°å¼‚å¸¸æ•°æ®")); break;
 	}
 }
 void init()
@@ -120,19 +136,21 @@ void init()
 		{
 			for (k = 0; k<16; k++)
 			{
-				//ÓÃ×Ö·û0ÇåÁãÊı¾İ¡£
-				str[i][j][k] = '0';
+				//ç”¨å­—ç¬¦0æ¸…é›¶æ•°æ®ã€‚
+				str[i][j][k] = 'k';
 			}
 		}
 	}
 	save();
 }
 // ****************************************************************
-// ¼ÓÔØÎÄ¼şÊı¾İµ½ÄÚ´æ
+// åŠ è½½æ–‡ä»¶æ•°æ®åˆ°å†…å­˜
 //*****************************************************************
 void load()
 {
 	int i, j;
+	//char temp[20];
+	//strcpy(temp, fileDizhi);
 	FILE *fp = fopen(fileDizhi, "r");
 	if (!fp)
 	{
@@ -143,14 +161,15 @@ void load()
 	{
 		for (j = 0; j<5; j++)
 		{
-			//Ã¿16¸ö×Ö·ûÒ»×éÕıºÃÓĞÒ»¸ö»Ø³µÌá¹©ÊäÈëµÄÈ·ÈÏ¡£
+			//æ¯16ä¸ªå­—ç¬¦ä¸€ç»„æ­£å¥½æœ‰ä¸€ä¸ªå›è½¦æä¾›è¾“å…¥çš„ç¡®è®¤ã€‚
 			fscanf(fp, "%s", str[i][j]);
 		}
 	}
+	//strcpy(fileDizhi, temp);
 	fclose(fp);
 }
 // ****************************************************************
-// ½«ËùÓĞµÄÊı¾İĞ´ÈëÎÄ¼ş£¬Õâ¸ö²Ù×÷½«ÔÚÈÎºÎÒ»¸öÄÚ´æÊı¾İ¸üĞÂÊ±È¥µ÷ÓÃ¡£
+// å°†æ‰€æœ‰çš„æ•°æ®å†™å…¥æ–‡ä»¶ï¼Œè¿™ä¸ªæ“ä½œå°†åœ¨ä»»ä½•ä¸€ä¸ªå†…å­˜æ•°æ®æ›´æ–°æ—¶å»è°ƒç”¨ã€‚
 // ****************************************************************
 void save()
 {
@@ -164,40 +183,154 @@ void save()
 			{
 				fprintf(fp, "%c", str[i][j][k]);
 			}
-			// Ğ´ÈëÒ»¸ö»Ø³µ»»ĞĞµÄÊÇÎªÁËloadº¯ÊıÖ´ĞĞÊ±Ã¿16¸ö×Ö·û¿ÉÒÔÍ¨¹ı%sµÄ·½Ê½¶ÁÈëÄÚ´æ¡£
+			// å†™å…¥ä¸€ä¸ªå›è½¦æ¢è¡Œçš„æ˜¯ä¸ºäº†loadå‡½æ•°æ‰§è¡Œæ—¶æ¯16ä¸ªå­—ç¬¦å¯ä»¥é€šè¿‡%sçš„æ–¹å¼è¯»å…¥å†…å­˜ã€‚
 			fprintf(fp, "\n");
 		}
 	}
 	fclose(fp);
 }
-BEGIN_MESSAGE_MAP(×ùÎ»ÏêÇéÒ³, CDialogEx)
-	ON_BN_CLICKED(IDC_BUTTON1, &×ùÎ»ÏêÇéÒ³::OnBnClickedButton1)
-	ON_BN_CLICKED(IDC_BUTTON5, &×ùÎ»ÏêÇéÒ³::OnBnClickedButton5)
-	ON_BN_CLICKED(IDC_BUTTON4, &×ùÎ»ÏêÇéÒ³::OnBnClickedButton4)
+BEGIN_MESSAGE_MAP(åº§ä½è¯¦æƒ…é¡µ, CDialogEx)
+	ON_BN_CLICKED(IDC_BUTTON1, &åº§ä½è¯¦æƒ…é¡µ::OnBnClickedButton1)
+	ON_BN_CLICKED(IDC_BUTTON5, &åº§ä½è¯¦æƒ…é¡µ::OnBnClickedButton5)
+	ON_BN_CLICKED(IDC_BUTTON4, &åº§ä½è¯¦æƒ…é¡µ::OnBnClickedButton4)
+	ON_BN_CLICKED(IDC_BUTTON2, &åº§ä½è¯¦æƒ…é¡µ::OnBnClickedButton2)
 END_MESSAGE_MAP()
-void ×ùÎ»ÏêÇéÒ³::OnBnClickedButton1()
+void åº§ä½è¯¦æƒ…é¡µ::OnBnClickedButton1()
 {	
+	UpdateData(TRUE);
+	if (flag == 1)
+	{
+		//flag++;
+		if (x = 1)
+			strcpy(fileDizhi, "res\\mv1.ini");
+		if (x==2)
+			strcpy(fileDizhi, "res\\mv2.ini");
+		if (x==3)
+			strcpy(fileDizhi, "res\\mv3.ini");
+	}
 	int k;
 	for (k = 0; k < 16; k++)
 	{
-		if (str[xuanWei][changCi][k] == '0')
-			;
+		if (str[diDian][changCi][k] == 'k')
+		{
+			CStatic *pic=NULL;
+			switch (k)
+			{
+			case 0: pic = (CStatic *)GetDlgItem(IDC_STATIC1); break;
+			case 1: pic = (CStatic *)GetDlgItem(IDC_STATIC2); break;
+			case 2: pic = (CStatic *)GetDlgItem(IDC_STATIC3); break;
+			case 3: pic = (CStatic *)GetDlgItem(IDC_STATIC4); break;
+			case 4: pic = (CStatic *)GetDlgItem(IDC_STATIC5); break;
+			case 5: pic = (CStatic *)GetDlgItem(IDC_STATIC6); break;
+			case 6: pic = (CStatic *)GetDlgItem(IDC_STATIC7); break;
+			case 7: pic = (CStatic *)GetDlgItem(IDC_STATIC8); break;
+			case 8: pic = (CStatic *)GetDlgItem(IDC_STATIC9); break;
+			case 9: pic = (CStatic *)GetDlgItem(IDC_STATIC10); break;
+			case 10: pic = (CStatic *)GetDlgItem(IDC_STATIC11); break;
+			case 11: pic = (CStatic *)GetDlgItem(IDC_STATIC12); break;
+			case 12: pic = (CStatic *)GetDlgItem(IDC_STATIC13); break;
+			case 13: pic = (CStatic *)GetDlgItem(IDC_STATIC14); break;
+			case 14: pic = (CStatic *)GetDlgItem(IDC_STATIC15); break;
+			case 15: pic = (CStatic *)GetDlgItem(IDC_STATIC16); break;
+			default:MessageBox(_T("kå€¼é”™è¯¯"));
+			}
+			pic->ShowWindow(SW_SHOW);
+
+		}
 		else
 		{
-			//ÕâÀïÌí¼ÓÏÔÊ¾×ùÎ»µÄÓï¾ä¡£
+			CStatic *pic=NULL;
+			switch (k)
+			{
+			case 0: pic = (CStatic *)GetDlgItem(IDC_STATIC1); break;
+			case 1: pic = (CStatic *)GetDlgItem(IDC_STATIC2); break;
+			case 2: pic = (CStatic *)GetDlgItem(IDC_STATIC3); break;
+			case 3: pic = (CStatic *)GetDlgItem(IDC_STATIC4); break;
+			case 4: pic = (CStatic *)GetDlgItem(IDC_STATIC5); break;
+			case 5: pic = (CStatic *)GetDlgItem(IDC_STATIC6); break;
+			case 6: pic = (CStatic *)GetDlgItem(IDC_STATIC7); break;
+			case 7: pic = (CStatic *)GetDlgItem(IDC_STATIC8); break;
+			case 8: pic = (CStatic *)GetDlgItem(IDC_STATIC9); break;
+			case 9: pic = (CStatic *)GetDlgItem(IDC_STATIC10); break;
+			case 10: pic = (CStatic *)GetDlgItem(IDC_STATIC11); break;
+			case 11: pic = (CStatic *)GetDlgItem(IDC_STATIC12); break;
+			case 12: pic = (CStatic *)GetDlgItem(IDC_STATIC13); break;
+			case 13: pic = (CStatic *)GetDlgItem(IDC_STATIC14); break;
+			case 14: pic = (CStatic *)GetDlgItem(IDC_STATIC15); break;
+			case 15: pic = (CStatic *)GetDlgItem(IDC_STATIC16); break;
+			default:MessageBox(_T("kå€¼é”™è¯¯"));
+			}
+			pic->ShowWindow(SW_HIDE);
 		}	
 	}
+	save();
+	load();
 	UpdateData(FALSE);
 }
-void ×ùÎ»ÏêÇéÒ³::OnBnClickedButton5()//tui
+void åº§ä½è¯¦æƒ…é¡µ::OnBnClickedButton5()//tui
 {
 	UpdateData(TRUE);
-	str[xuanWei][changCi][xuanWei] = '2';
-	OnBnClickedButton1();
+	if (flag == 1)
+	{
+		//flag++;
+		if (x = 1)
+			strcpy(fileDizhi, "res\\mv1.ini");
+		if (x == 2)
+			strcpy(fileDizhi, "res\\mv2.ini");
+		if (x == 3)
+			strcpy(fileDizhi, "res\\mv3.ini");
+	}
+	load();
+	if (str[diDian][changCi][xuanWei - 1] == '1')
+	{
+		str[diDian][changCi][xuanWei-1] = 't';
+		OnBnClickedButton1();
+	}
+	else
+	{
+		if (str[diDian][changCi][xuanWei - 1]=='t')
+		MessageBox(_T("è¯¥ä½ç½®æ­£åœ¨é€€ç¥¨ä¸­ã€‚ã€‚ã€‚\nè¯·ç­‰å¾…ç®¡ç†åŸå¤„ç†"));
+		else
+		{
+			MessageBox(_T("è¯¥ä½ç½®ä¸ºç©ºä½ï¼Œä¸æ¥å—é€€ç¥¨è¯·æ±‚"));
+		}
+	}
+	
 }
-void ×ùÎ»ÏêÇéÒ³::OnBnClickedButton4()//ding
+void åº§ä½è¯¦æƒ…é¡µ::OnBnClickedButton4()//ding
 {
 	UpdateData(TRUE);
-	str[xuanWei][changCi][xuanWei] = '1';
-	OnBnClickedButton1();
+	if (flag == 1)
+	{
+		//flag++;
+		if (x = 1)
+			strcpy(fileDizhi, "res\\mv1.ini");
+		if (x == 2)
+			strcpy(fileDizhi, "res\\mv2.ini");
+		if (x == 3)
+			strcpy(fileDizhi, "res\\mv3.ini");
+	}
+	load();
+	if (str[diDian][changCi][xuanWei - 1] != '1')
+	{
+		str[diDian][changCi][xuanWei-1] = '1';
+		OnBnClickedButton1();
+	}
+	else
+	{
+		MessageBox(_T("è¯¥ä½ç½®å·²ç»è¢«é¢„å®šã€‚ã€‚ã€‚"));
+	}
+}
+
+
+void åº§ä½è¯¦æƒ…é¡µ::OnBnClickedButton2()
+{
+	comKou.put_CommPort(5);    //ç«¯å£å·  COM1 2 3 4 
+	comKou.put_Settings(_T("9600,n,8,1"));  //æ³¢ç‰¹ç‡=9600ï¼ŒN æ²¡æœ‰æ ¡éªŒä½ï¼Œ 8 æ•°æ®ä½ï¼Œ1 åœæ­¢ä½
+	comKou.put_InBufferSize(1024);   //è¾“å…¥ç¼“å†²åŒº
+	comKou.put_InBufferCount(0);   //æ¸…ç©ºè¾“å…¥ç¼“å†²åŒº
+	comKou.put_InputMode(1);
+	comKou.put_InputLen(0);
+	comKou.put_RThreshold(1);
+	comKou.put_PortOpen(1);
 }
