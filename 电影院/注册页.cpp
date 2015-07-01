@@ -49,7 +49,6 @@ void 注册页::OnBnClickedButton1()
 		char * pstr = new char[strsize]; //分配空间;
 		size_t sz = 0;
 		wcstombs_s(&sz, pstr, strsize, m1, _TRUNCATE);
-
 		int n = atoi((const char*)pstr); // 字符串已经由原来的CString 转换成了 const char*
 		FILE *fp;
 		if (!(fp = fopen("res\\admin.pwd", "w")))

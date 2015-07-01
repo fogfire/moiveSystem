@@ -11,7 +11,6 @@ void load();
 void save();
 char str[3][5][16];
 char fileDizhi[20];
-
 // 座位详情页 对话框
 
 IMPLEMENT_DYNAMIC(座位详情页, CDialogEx)
@@ -53,6 +52,7 @@ void 座位详情页::DoDataExchange(CDataExchange* pDX)
 	DDV_MinMaxInt(pDX, xuanWei, 1, 16);
 	DDX_Control(pDX, IDC_MSCOMM1, comKou);
 	DDX_CBIndex(pDX, IDC_COMBO2, changCi);
+	/*
 	DDX_Control(pDX, IDC_w11, t11);
 	DDX_Control(pDX, IDC_w12, t12);
 	DDX_Control(pDX, IDC_w13, t13);
@@ -69,6 +69,7 @@ void 座位详情页::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_w24, t42);
 	DDX_Control(pDX, IDC_w25, t43);
 	DDX_Control(pDX, IDC_w26, t44);
+	*/
 }
 
 
@@ -200,16 +201,25 @@ END_MESSAGE_MAP()
 
 
 void 座位详情页::OnBnClickedButton1()
-{
-	// TODO:  在此添加控件通知处理程序代码
-	MessageBox(_T("调用成功"));
+{	
+	
+	int k;
+	for (k = 0; k < 16; k++)
+	{
+		if (str[xuanWei][changCi][k] == '0')
+			;
+		else
+		{
+			//这里添加显示座位的语句。
+		}
+		
+	}
 	UpdateData(FALSE);
 }
 
 
 void 座位详情页::OnBnClickedButton5()//tui
 {
-	// TODO:  在此添加控件通知处理程序代码
 	UpdateData(TRUE);
 	str[xuanWei][changCi][xuanWei] = '2';
 	OnBnClickedButton1();
@@ -218,7 +228,6 @@ void 座位详情页::OnBnClickedButton5()//tui
 
 void 座位详情页::OnBnClickedButton4()//ding
 {
-	// TODO:  在此添加控件通知处理程序代码
 	UpdateData(TRUE);
 	str[xuanWei][changCi][xuanWei] = '1';
 	OnBnClickedButton1();
