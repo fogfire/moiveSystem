@@ -33,9 +33,9 @@ IMPLEMENT_DYNAMIC(座位详情页, CDialogEx)
 	x = a;
 	switch (x)
 	{
-	case 1: strcpy(fileDizhi, "1.res"); break;
-	case 2: strcpy(fileDizhi, "2.res"); break;
-	case 3: strcpy(fileDizhi, "3.res"); break;
+	case 1: strcpy(fileDizhi, "res\\1.res"); break;
+	case 2: strcpy(fileDizhi, "res\\2.res"); break;
+	case 3: strcpy(fileDizhi, "res\\3.res"); break;
 	default:
 		EndDialog(0);
 		break;
@@ -53,6 +53,22 @@ void 座位详情页::DoDataExchange(CDataExchange* pDX)
 	DDV_MinMaxInt(pDX, xuanWei, 1, 16);
 	DDX_Control(pDX, IDC_MSCOMM1, comKou);
 	DDX_CBIndex(pDX, IDC_COMBO2, changCi);
+	DDX_Control(pDX, IDC_w11, t11);
+	DDX_Control(pDX, IDC_w12, t12);
+	DDX_Control(pDX, IDC_w13, t13);
+	DDX_Control(pDX, IDC_w14, t14);
+	DDX_Control(pDX, IDC_w15, t21);
+	DDX_Control(pDX, IDC_w16, t22);
+	DDX_Control(pDX, IDC_w17, t23);
+	DDX_Control(pDX, IDC_w18, t24);
+	DDX_Control(pDX, IDC_w19, t31);
+	DDX_Control(pDX, IDC_w20, t32);
+	DDX_Control(pDX, IDC_w21, t33);
+	DDX_Control(pDX, IDC_w22, t34);
+	DDX_Control(pDX, IDC_w23, t41);
+	DDX_Control(pDX, IDC_w24, t42);
+	DDX_Control(pDX, IDC_w25, t43);
+	DDX_Control(pDX, IDC_w26, t44);
 }
 
 
@@ -91,6 +107,7 @@ void 座位详情页::OnCommMscomm1()
 	//OnBnClickednextmoive();
 	switch (rxdata[0])
 	{
+	case 0: break;
 	case 1: str[xuanWei][changCi][0] = '1'; save(); load(); break;
 	case 2: str[xuanWei][changCi][1] = '1'; save(); load(); break;
 	case 3: str[xuanWei][changCi][2] = '1'; save(); load(); break;
@@ -107,19 +124,15 @@ void 座位详情页::OnCommMscomm1()
 	case 14: str[xuanWei][changCi][13] = '1'; save(); load();  break;
 	case 15: str[xuanWei][changCi][14] = '1'; save(); load();  break;
 	case 16: str[xuanWei][changCi][15] = '1'; save(); load(); break;
-	case 17: break;
-	case 18: break;
-	case 19: break;
-	case 20: break;
-	default: break;
+	default: MessageBox(_T("接收到异常数据")); break;
 	}
 }
 void init()
 {
 	int i, j, k;
-	for (i = 0; i<7; i++)
+	for (i = 0; i<3; i++)
 	{
-		for (j = 0; j<7; j++)
+		for (j = 0; j<5; j++)
 		{
 			for (k = 0; k<16; k++)
 			{
@@ -145,9 +158,9 @@ void load()
 		fp = fopen(fileDizhi, "r");
 	}
 
-	for (i = 0; i<7; i++)
+	for (i = 0; i<3; i++)
 	{
-		for (j = 0; j<7; j++)
+		for (j = 0; j<5; j++)
 		{
 			//每16个字符一组正好有一个回车提供输入的确认。
 			fscanf(fp, "%s", str[i][j]);
@@ -163,9 +176,9 @@ void save()
 {
 	int i, j, k;
 	FILE *fp = fopen(fileDizhi, "w");
-	for (i = 0; i<7; i++)
+	for (i = 0; i<3; i++)
 	{
-		for (j = 0; j<7; j++)
+		for (j = 0; j<5; j++)
 		{
 			for (k = 0; k<16; k++)
 			{
@@ -179,24 +192,34 @@ void save()
 }
 
 
-//订票
-void 座位详情页::OnBnClickedButton2()
+BEGIN_MESSAGE_MAP(座位详情页, CDialogEx)
+	ON_BN_CLICKED(IDC_BUTTON1, &座位详情页::OnBnClickedButton1)
+	ON_BN_CLICKED(IDC_BUTTON5, &座位详情页::OnBnClickedButton5)
+	ON_BN_CLICKED(IDC_BUTTON4, &座位详情页::OnBnClickedButton4)
+END_MESSAGE_MAP()
+
+
+void 座位详情页::OnBnClickedButton1()
 {
-	UpdateData(TRUE);
-	str[xuanWei][changCi][xuanWei]='1';
-	OnBnClickedupdata();
+	// TODO:  在此添加控件通知处理程序代码
+	MessageBox(_T("调用成功"));
+	UpdateData(FALSE);
 }
 
-//刷新
-void 座位详情页::OnBnClickedupdata()
-{
-	
-}
 
-//退票
-void 座位详情页::OnBnClickedButton3()
+void 座位详情页::OnBnClickedButton5()//tui
 {
+	// TODO:  在此添加控件通知处理程序代码
 	UpdateData(TRUE);
 	str[xuanWei][changCi][xuanWei] = '2';
-	OnBnClickedupdata();
+	OnBnClickedButton1();
+}
+
+
+void 座位详情页::OnBnClickedButton4()//ding
+{
+	// TODO:  在此添加控件通知处理程序代码
+	UpdateData(TRUE);
+	str[xuanWei][changCi][xuanWei] = '1';
+	OnBnClickedButton1();
 }

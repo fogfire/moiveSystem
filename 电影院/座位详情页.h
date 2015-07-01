@@ -1,5 +1,6 @@
 #pragma once
 #include "mscomm1.h"
+#include "afxwin.h"
 
 
 // 座位详情页 对话框
@@ -29,8 +30,24 @@ public:
 	void OnCommMscomm1();
 	afx_msg void OnCbnSelchangeCombo1();
 	int changCi;
-	//DECLARE_MESSAGE_MAP()
-	afx_msg void OnBnClickedButton2();
-	afx_msg void OnBnClickedupdata();
-	afx_msg void OnBnClickedButton3();
+	CStatic t11;
+	CStatic t12;
+	CStatic t13;
+	CStatic t14;
+	CStatic t21;
+	CStatic t22;
+	CStatic t23;
+	CStatic t24;
+	CStatic t31;
+	CStatic t32;
+	CStatic t33;
+	CStatic t34;
+	CStatic t41;
+	CStatic t43;
+	CStatic t42;
+	CStatic t44;
+	DECLARE_MESSAGE_MAP()
+	afx_msg void OnBnClickedButton1();
+	afx_msg void OnBnClickedButton5();
+	afx_msg void OnBnClickedButton4();
 };

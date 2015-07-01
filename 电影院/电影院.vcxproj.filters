@@ -45,6 +45,15 @@
     <ClInclude Include="mscomm1.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="后台.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="about.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="注册页.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="电影院.cpp">
@@ -68,6 +77,15 @@
     <ClCompile Include="mscomm1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="后台.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="about.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="注册页.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="电影院.rc">
@@ -79,6 +97,27 @@
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="res\welcome1.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\zuowei.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\32.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\0.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\bitmap2.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\first.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\bitmap3.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\logo.ico">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

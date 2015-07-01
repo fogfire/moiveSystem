@@ -1,4 +1,5 @@
 #pragma once
+#include "afxwin.h"
 
 
 // 管理页 对话框
@@ -25,4 +26,7 @@ protected:
 public:
 	afx_msg void OnBnClickedonload();
 	afx_msg void OnBnClickedbtngtos();
+	CEdit user;
+	CString psw;
+	CString userName;
 };

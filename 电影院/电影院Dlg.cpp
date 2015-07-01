@@ -8,6 +8,7 @@
 #include "afxdialogex.h"
 #include "管理页.h"
 #include "浏览页.h"
+#include"about.h"
 bool isTrue;
 int x;
 
@@ -17,6 +18,7 @@ int x;
 
 
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
+/*
 
 class CAboutDlg : public CDialogEx
 {
@@ -32,6 +34,10 @@ public:
 // 实现
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	//afx_msg void OnBnClickedButton1();
+	//afx_msg void OnBnClickedgo();
+	afx_msg void OnBnClickedgo();
 };
 
 CAboutDlg::CAboutDlg() : CDialogEx(CAboutDlg::IDD)
@@ -43,8 +49,7 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 	CDialogEx::DoDataExchange(pDX);
 }
 
-BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
-END_MESSAGE_MAP()
+*/
 
 
 // C电影院Dlg 对话框
@@ -71,6 +76,7 @@ BEGIN_MESSAGE_MAP(C电影院Dlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON1, &C电影院Dlg::OnBnClickedButton1)
 	ON_BN_CLICKED(IDC_BUTTON2, &C电影院Dlg::OnBnClickedButton2)
 	ON_BN_CLICKED(IDC_btnOut, &C电影院Dlg::OnBnClickedbtnout)
+	ON_BN_CLICKED(IDC_BUTTON3, &C电影院Dlg::OnBnClickedButton3)
 END_MESSAGE_MAP()
 
 
@@ -114,7 +120,7 @@ void C电影院Dlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
 	if ((nID & 0xFFF0) == IDM_ABOUTBOX)
 	{
-		CAboutDlg dlgAbout;
+		about dlgAbout;
 		dlgAbout.DoModal();
 	}
 	else
@@ -202,4 +208,13 @@ void C电影院Dlg::OnBnClickedButton2()//浏览页
 void C电影院Dlg::OnBnClickedbtnout()
 {
 	exit(0);
+}
+
+
+void C电影院Dlg::OnBnClickedButton3()
+{
+	about 关于;
+	this->ShowWindow(SW_HIDE);
+	关于.DoModal();
+	this->ShowWindow(SW_SHOW);
 }

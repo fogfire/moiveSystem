@@ -5,6 +5,8 @@
 #include "电影院.h"
 #include "管理页.h"
 #include "afxdialogex.h"
+#include"注册页.h"
+#pragma warning(disable:4996)
 
 
 // 管理页 对话框
@@ -13,6 +15,8 @@ IMPLEMENT_DYNAMIC(管理页, CDialogEx)
 
 管理页::管理页(CWnd* pParent /*=NULL*/)
 	: CDialogEx(管理页::IDD, pParent)
+	, psw(_T(""))
+	, userName(_T(""))
 {
 
 	EnableAutomation();
@@ -36,6 +40,9 @@ void 管理页::OnFinalRelease()
 void 管理页::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_Username, user);
+	DDX_Text(pDX, IDC_pwd, psw);
+	DDX_Text(pDX, IDC_Username, userName);
 }
 
 
@@ -65,8 +72,35 @@ END_INTERFACE_MAP()
 
 void 管理页::OnBnClickedonload()
 {
-	MessageBox(_T("登陆成功！"));
-	CDialog::OnOK();
+	UpdateData(TRUE);
+	char mi[20];
+	FILE *fp;
+loop:
+	if (!(fp = fopen("res\\admin.pwd", "r")))
+	{
+		MessageBox(_T("第一次使用本系统，点击确认注册！用户名请填admin"));
+		注册页 注册;
+		this->ShowWindow(SW_HIDE);
+		注册.DoModal();
+		this->ShowWindow(SW_SHOW);
+		goto loop;
+	}
+	fscanf(fp, "%s", mi);
+	fclose(fp);
+	if (userName != "admin")
+	{
+		MessageBox(_T("查询到0条此用户信息"));
+	}
+	if (userName == "admin"&&psw == mi)
+	{
+		MessageBox(_T("登陆成功！"));
+		
+	}
+	else
+	{
+		MessageBox(_T("密码错误！重新输入"));
+	}
+	
 }
 
 
