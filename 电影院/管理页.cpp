@@ -6,6 +6,7 @@
 #include "管理页.h"
 #include "afxdialogex.h"
 #include"注册页.h"
+#include"后台.h"
 #pragma warning(disable:4996)
 
 
@@ -75,7 +76,6 @@ void 管理页::OnBnClickedonload()
 	UpdateData(TRUE);
 	char mi[20];
 	FILE *fp;
-loop:
 	if (!(fp = fopen("res\\admin.pwd", "r")))
 	{
 		MessageBox(_T("第一次使用本系统，点击确认注册！用户名请填admin"));
@@ -83,7 +83,6 @@ loop:
 		this->ShowWindow(SW_HIDE);
 		注册.DoModal();
 		this->ShowWindow(SW_SHOW);
-		goto loop;
 	}
 	fscanf(fp, "%s", mi);
 	fclose(fp);
@@ -94,13 +93,16 @@ loop:
 	if (userName == "admin"&&psw == mi)
 	{
 		MessageBox(_T("登陆成功！"));
-		
+		后台 后台页;
+		this->ShowWindow(SW_HIDE);
+		后台页.DoModal();
+		this->ShowWindow(SW_SHOW);
 	}
 	else
 	{
 		MessageBox(_T("密码错误！重新输入"));
 	}
-	
+
 }
 
 
