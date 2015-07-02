@@ -323,7 +323,7 @@ void 座位详情页::OnCommMscomm1()
 			MessageBox(_T("已到达首项"));
 		break;
 	case 20: UpdateData(TRUE);
-		if (changCi < 5)
+		if (changCi < 4)
 		{
 			changCi++;
 			UpdateData(FALSE);
