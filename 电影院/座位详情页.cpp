@@ -315,7 +315,7 @@ void 座位详情页::OnCommMscomm1()
 	case 19: UpdateData(TRUE);
 		if (changCi>0)
 		{
-			changCi++;
+			changCi--;
 			UpdateData(FALSE);
 			OnBnClickedButton1();
 		}
