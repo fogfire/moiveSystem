@@ -20,14 +20,14 @@ IMPLEMENT_DYNAMIC(座位详情页, CDialogEx)
 	, changCi(0)
 {
 }
-座位详情页::座位详情页(int a)
-: CDialogEx(座位详情页::IDD, NULL)
+座位详情页::座位详情页(int a, CWnd* pParent)
+: CDialogEx(座位详情页::IDD, pParent)
 , diDian(0)
 , xuanWei(1)
 , changCi(0)
+, x(a)
+, flag(1)
 {
-	x = a;
-	flag = 1;
 }
 座位详情页::~座位详情页()
 {
@@ -287,6 +287,51 @@ void 座位详情页::OnCommMscomm1()
 				strcpy(fileDizhi, "res\\mv3.ini");
 		}
 		save(); load(); OnBnClickedButton1(); break;
+	case 17: UpdateData(TRUE);
+		if (diDian > 0)
+		{
+			diDian--;
+			UpdateData(FALSE);
+			OnBnClickedButton1();
+		}
+			
+		else
+		{
+			MessageBox(_T("已到达首项！"));
+		}
+		break;
+			
+	case 18: UpdateData(TRUE);
+		if (diDian < 2)
+		{
+			diDian++;
+			UpdateData(FALSE);
+			OnBnClickedButton1();
+		}
+			
+		else
+			 MessageBox(_T("已到达尾项！"));
+		break;
+	case 19: UpdateData(TRUE);
+		if (changCi>0)
+		{
+			changCi++;
+			UpdateData(FALSE);
+			OnBnClickedButton1();
+		}
+		else
+			MessageBox(_T("已到达首项"));
+		break;
+	case 20: UpdateData(TRUE);
+		if (changCi < 5)
+		{
+			changCi++;
+			UpdateData(FALSE);
+			OnBnClickedButton1();
+		}
+		else
+			MessageBox(_T("已到达尾项"));
+		break;
 	default:  break;
 	}
 	www = 1;

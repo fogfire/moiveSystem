@@ -13,7 +13,7 @@ public:
 	int  x;
 	int flag;
 	座位详情页(CWnd* pParent = NULL);
-	座位详情页(int a);
+	座位详情页(int a, CWnd* pParent = NULL);
 	virtual ~座位详情页();
 	
 // 对话框数据

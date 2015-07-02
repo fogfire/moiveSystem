@@ -137,7 +137,6 @@
     <Image Include="res\32.ico" />
     <Image Include="res\bitmap2.bmp" />
     <Image Include="res\bitmap3.bmp" />
-    <Image Include="res\bitmap4.bmp" />
     <Image Include="res\first.bmp" />
     <Image Include="res\jbx.bmp" />
     <Image Include="res\logo.ico" />

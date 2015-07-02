@@ -21,7 +21,7 @@ uchar key[] = {0xEE,0xDE,0xBE,0x7E,0xED,0xDD,0xBD,0x7D,0xEB,0xDB,0xBB,0x7B,0xE7,
 
 
 //seat(下标加1)
-uint seat[]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
+uint seat[]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
 
 
 uchar buf;//缓存数据。
@@ -141,7 +141,7 @@ void main(void)
       }
       result = row | queen;   
       if(result==key[i])
-      {     
+      {    
         while(1)
         {
           if(P3==0x0f)
@@ -152,8 +152,20 @@ void main(void)
       }
           
     }
+	if(i>=16&&i<20)
+	{
+		P3=0xff;
+		while(1)
+		{
+			if(P3==0xff)
+			delay(22);
+			if(P3==0xff)
+			break;
+		}
+	
+	}
     EA = 1;
-    if((i >= 0)&&(i < 16)&&(seat[i]!=0x00)&&(seat[i]!=0xFF)&&(seat[i]!=0xF8))
+    if((i >= 0)&&(i < 20)&&(seat[i]!=0x00)&&(seat[i]!=0xFF)&&(seat[i]!=0xF8))
       send(seat[i]);
 	display();
   }
