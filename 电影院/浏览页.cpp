@@ -149,6 +149,7 @@ void ไฏภภาณ::OnBnClickedbtnm1()
 	ื๙ฮปฯ๊ว้าณ zx1(1);
 	zx1.DoModal();
 	ShowWindow(SW_SHOW);
+	EndDialog(5);
 }
 void ไฏภภาณ::OnBnClickedbtnm2()
 {
@@ -156,6 +157,7 @@ void ไฏภภาณ::OnBnClickedbtnm2()
 	ื๙ฮปฯ๊ว้าณ zx2(2);
 	zx2.DoModal();
 	ShowWindow(SW_SHOW);
+	EndDialog(5);
 }
 void ไฏภภาณ::OnBnClickedbtnm3()
 {
@@ -163,6 +165,7 @@ void ไฏภภาณ::OnBnClickedbtnm3()
 	ื๙ฮปฯ๊ว้าณ zx3(3);
 	zx3.DoModal();
 	ShowWindow(SW_SHOW);
+	EndDialog(5);
 }
 
 

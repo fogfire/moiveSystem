@@ -97,6 +97,7 @@ void 管理页::OnBnClickedonload()
 		this->ShowWindow(SW_HIDE);
 		后台页.DoModal();
 		this->ShowWindow(SW_SHOW);
+		EndDialog(5);
 	}
 	else
 	{
