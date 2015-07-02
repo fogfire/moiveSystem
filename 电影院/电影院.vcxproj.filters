@@ -120,5 +120,17 @@
     <Image Include="res\logo.ico">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="res\jbx.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\bitmap4.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\xhr.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\qh.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>

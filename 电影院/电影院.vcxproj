@@ -137,9 +137,13 @@
     <Image Include="res\32.ico" />
     <Image Include="res\bitmap2.bmp" />
     <Image Include="res\bitmap3.bmp" />
+    <Image Include="res\bitmap4.bmp" />
     <Image Include="res\first.bmp" />
+    <Image Include="res\jbx.bmp" />
     <Image Include="res\logo.ico" />
+    <Image Include="res\qh.bmp" />
     <Image Include="res\welcome1.bmp" />
+    <Image Include="res\xhr.bmp" />
     <Image Include="res\zuowei.ico" />
     <Image Include="res\电影院.ico" />
   </ItemGroup>

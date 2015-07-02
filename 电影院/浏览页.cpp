@@ -79,7 +79,7 @@ IMPLEMENT_DYNAMIC(浏览页, CDialogEx)
 		
 		fclose(fp);
 		LONGLONG lOff = 0;         // 文件指针的偏移量，也是读取到的数据的总字节数   
-		CFile file(_T("res//1.ini"),  CFile::modeRead);
+		CFile file(_T("res//3.ini"),  CFile::modeRead);
 		while (true)
 		{
 			// 以文件开头为基准，移动文件指针到lOff的位置   

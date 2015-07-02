@@ -11,6 +11,7 @@ void init1();
 void load1();
 void save1();
 char fileDizhi1[20];
+int a=-1, b, c;
 // 后台 对话框
 IMPLEMENT_DYNAMIC(后台, CDialogEx)
 
@@ -112,39 +113,150 @@ END_MESSAGE_MAP()
 
 void 后台::OnBnClickedButton1()//同意
 {
-	
+	if (a == -1)
+	{
+		;
+	}
+	else
+	{
+		str1[a][b][c] = 'k';
+	}
+	a = -1;
+	if (电影场次 == 0)
+	{
+		strcpy(fileDizhi1, "res\\mv1.ini");
+	}
+	if (电影场次 == 1)
+	{
+		strcpy(fileDizhi1, "res\\mv2.ini");
+	}
+	if (电影场次 == 2)
+	{
+		strcpy(fileDizhi1, "res\\mv3.ini");
+	}
+	save1();
+	OnBnClickedButton3();
 }
 
 
 void 后台::OnBnClickedButton2()//拒绝
 {
-	
+	if (a == -1)
+	{
+		;
+	}
+	else
+	{
+		str1[a][b][c] = '1';
+	}
+	a = -1;
+	if (电影场次 == 0)
+	{
+		strcpy(fileDizhi1, "res\\mv1.ini");
+	}
+	if (电影场次 == 1)
+	{
+		strcpy(fileDizhi1, "res\\mv2.ini");
+	}
+	if (电影场次 == 2)
+	{
+		strcpy(fileDizhi1, "res\\mv3.ini");
+	}
+	save1();
+	OnBnClickedButton3();
 }
 
 
 void 后台::OnBnClickedButton3()//刷新
 {
 	int i, j, k;
-
+	UpdateData(TRUE);
+	if (电影场次 == 0)
+	{
+		strcpy(fileDizhi1, "res\\mv1.ini");
+	}
+	if (电影场次 == 1)
+	{
+		strcpy(fileDizhi1, "res\\mv2.ini");
+	}
+	if (电影场次 == 2)
+	{
+		strcpy(fileDizhi1, "res\\mv3.ini");
+	}
+	load1();
+	if (电影场次 == 0)
+	{
+		strcpy(fileDizhi1, "res\\mv1.ini");
+	}
+	if (电影场次 == 1)
+	{
+		strcpy(fileDizhi1, "res\\mv2.ini");
+	}
+	if (电影场次 == 2)
+	{
+		strcpy(fileDizhi1, "res\\mv3.ini");
+	}
 	for (i = 0; i < 3; i++)
 	{
 		for (j = 0; j < 5; j++)
 		{
 			for (k = 0; k < 16; k++)
 			{
-				if (str1[i][j][k] == '2')
+				if (str1[i][j][k] == 't')
 				{
-					int y=5;
-					switch (y)
+					switch (i)
 					{
-					case 1: tuipiao += "电影1"; break;
-					case 2: tuipiao += "电影2"; break;
-					case 3: tuipiao += "电影3"; break;
-					default: tuipiao = "数据异常"; break;
+					case 0:tuipiao = "1-1厅"; break;
+					case 1:tuipiao = "1-2厅"; break;
+					case 2:tuipiao = "1-3厅"; break;
+					default:
+						break;
 					}
-					break;
+					switch (j)
+					{
+					case 0:tuipiao += "9:00第"; break;
+					case 1:tuipiao += "11:15第"; break;
+					case 2:tuipiao += "14:00第"; break;
+					case 3:tuipiao += "16:15第"; break;
+					case 4:tuipiao += "20:00第"; break;
+					default:
+						break;
+					}
+					switch (k)
+					{
+					case 0: tuipiao += "1"; break;
+					case 1: tuipiao += "2"; break;
+					case 2: tuipiao += "3"; break;
+					case 3: tuipiao += "4"; break;
+					case 4: tuipiao += "5"; break;
+					case 5: tuipiao += "6"; break;
+					case 6: tuipiao += "7"; break;
+					case 7: tuipiao += "8"; break;
+					case 8: tuipiao += "9"; break;
+					case 9: tuipiao += "10"; break;
+					case 10: tuipiao += "11"; break;
+					case 11: tuipiao += "12"; break;
+					case 12: tuipiao += "13"; break;
+					case 13: tuipiao += "14"; break;
+					case 14: tuipiao += "15"; break;
+					case 15: tuipiao += "16"; break;
+					default:
+						break;
+					}
+					tuipiao += "号";
+					a = i;
+					b = j;
+					c = k;
+					
+					k = 16;
+					j = 5;
+					i = 20;
+					
 				}
 			}
 		}
 	}
+	if (i != 21)
+		tuipiao = "无退票请求。";
+	UpdateData(FALSE);
 }

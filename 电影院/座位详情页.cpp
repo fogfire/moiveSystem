@@ -10,6 +10,7 @@ void load();
 void save();
 char str[3][5][16];
 char fileDizhi[20];
+int www=1;
 // 座位详情页 对话框
 IMPLEMENT_DYNAMIC(座位详情页, CDialogEx)
 座位详情页::座位详情页(CWnd* pParent /*=NULL*/)
@@ -101,31 +102,194 @@ void 座位详情页::OnCommMscomm1()
 		if (x == 3)
 			strcpy(fileDizhi, "res\\mv3.ini");
 	}
+	xuanWei = rxdata[0];
+	www = 0;
+	//MessageBox(_T("hsdgafkashfkj"));
 	switch (rxdata[0])
 	{
 	case 0: break;
-	case 1: str[diDian][changCi][0] = (str[diDian][changCi][0] == '1' ? 't' : '1'); 
-		save(); 
-		load(); 
-		OnBnClickedButton1(); 
-		break;
-	case 2: str[diDian][changCi][1] = (str[diDian][changCi][1] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
-	case 3: str[diDian][changCi][2] = (str[diDian][changCi][2] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
-	case 4: str[diDian][changCi][3] = (str[diDian][changCi][3] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
-	case 5: str[diDian][changCi][4] = (str[diDian][changCi][4] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
-	case 6: str[diDian][changCi][5] = (str[diDian][changCi][5] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1();  break;
-	case 7: str[diDian][changCi][6] = (str[diDian][changCi][6] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1();  break;
-	case 8: str[diDian][changCi][7] = (str[diDian][changCi][7] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
-	case 9: str[diDian][changCi][8] = (str[diDian][changCi][8] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
-	case 10: str[diDian][changCi][9] = (str[diDian][changCi][9] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
-	case 11: str[diDian][changCi][10] = (str[diDian][changCi][10] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
-	case 12: str[diDian][changCi][11] = (str[diDian][changCi][11] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
-	case 13: str[diDian][changCi][12] = (str[diDian][changCi][13] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
-	case 14: str[diDian][changCi][13] = (str[diDian][changCi][14] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
-	case 15: str[diDian][changCi][14] = (str[diDian][changCi][15] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
-	case 16: str[diDian][changCi][15] = (str[diDian][changCi][16] == '1' ? 't' : '1'); save(); load(); OnBnClickedButton1(); break;
-	default: MessageBox(_T("接收到异常数据")); break;
+	case 1: if (str[diDian][changCi][0] == '1')
+				OnBnClickedButton5(); 
+			else 
+				OnBnClickedButton4();
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save(); load(); OnBnClickedButton1(); break;
+	case 2: if (str[diDian][changCi][1] == '1')OnBnClickedButton5(); else OnBnClickedButton4();
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save(); load(); OnBnClickedButton1(); break;
+	case 3: if (str[diDian][changCi][2] == '1')OnBnClickedButton5(); else OnBnClickedButton4();
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save(); load(); OnBnClickedButton1(); break;
+	case 4: if (str[diDian][changCi][3] == '1')OnBnClickedButton5(); else OnBnClickedButton4();
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save(); load(); OnBnClickedButton1(); break;
+	case 5:if (str[diDian][changCi][4] == '1')OnBnClickedButton5(); else OnBnClickedButton4();
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save(); load(); OnBnClickedButton1(); break;
+	case 6: if (str[diDian][changCi][5] == '1')OnBnClickedButton5(); else OnBnClickedButton4();
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save(); load(); OnBnClickedButton1();  break;
+	case 7: if (str[diDian][changCi][6] == '1')OnBnClickedButton5(); else OnBnClickedButton4();
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save(); load(); OnBnClickedButton1();  break;
+	case 8: if (str[diDian][changCi][7] == '1')OnBnClickedButton5(); else OnBnClickedButton4();
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save(); load(); OnBnClickedButton1(); break;
+	case 9: if (str[diDian][changCi][8] == '1')OnBnClickedButton5(); else OnBnClickedButton4();
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save(); load(); OnBnClickedButton1(); break;
+	case 10: if (str[diDian][changCi][9] == '1')OnBnClickedButton5(); else OnBnClickedButton4();
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save(); load(); OnBnClickedButton1(); break;
+	case 11: if (str[diDian][changCi][10] == '1')OnBnClickedButton5(); else OnBnClickedButton4();
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save(); load(); OnBnClickedButton1(); break;
+	case 12: if (str[diDian][changCi][11] == '1')OnBnClickedButton5(); else OnBnClickedButton4();
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save(); load(); OnBnClickedButton1(); break;
+	case 13: if (str[diDian][changCi][12] == '1')OnBnClickedButton5(); else OnBnClickedButton4();
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save(); load(); OnBnClickedButton1(); break;
+	case 14: if (str[diDian][changCi][13] == '1')OnBnClickedButton5(); else OnBnClickedButton4();
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save(); load(); OnBnClickedButton1(); break;
+	case 15: if (str[diDian][changCi][14] == '1')OnBnClickedButton5(); else OnBnClickedButton4();
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save(); load(); OnBnClickedButton1(); break;
+	case 16: if (str[diDian][changCi][15] == '1')OnBnClickedButton5(); else OnBnClickedButton4();
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save(); load(); OnBnClickedButton1(); break;
+	default:  break;
 	}
+	www = 1;
 }
 void init()
 {
@@ -194,6 +358,7 @@ BEGIN_MESSAGE_MAP(座位详情页, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON5, &座位详情页::OnBnClickedButton5)
 	ON_BN_CLICKED(IDC_BUTTON4, &座位详情页::OnBnClickedButton4)
 	ON_BN_CLICKED(IDC_BUTTON2, &座位详情页::OnBnClickedButton2)
+	ON_BN_CLICKED(IDC_BUTTON6, &座位详情页::OnBnClickedButton6)
 END_MESSAGE_MAP()
 void 座位详情页::OnBnClickedButton1()
 {	
@@ -219,11 +384,12 @@ void 座位详情页::OnBnClickedButton1()
 		if (x == 3)
 			strcpy(fileDizhi, "res\\mv3.ini");
 	}
-	int k;
+	int k,yu=0;
 	for (k = 0; k < 16; k++)
 	{
 		if (str[diDian][changCi][k] == 'k')
 		{
+			yu++;
 			CStatic *pic=NULL;
 			switch (k)
 			{
@@ -274,12 +440,17 @@ void 座位详情页::OnBnClickedButton1()
 			pic->ShowWindow(SW_HIDE);
 		}	
 	}
+	CByteArray array;    //动态数组
+	array.RemoveAll();   //清除动态数组
+	array.Add(yu);	 //按字节添加数据
+	comKou.put_Output(COleVariant(array));  //发送数据
 	save();
 	load();
 	UpdateData(FALSE);
 }
 void 座位详情页::OnBnClickedButton5()//tui
 {
+	if (www)
 	UpdateData(TRUE);
 	if (flag == 1)
 	{
@@ -295,6 +466,17 @@ void 座位详情页::OnBnClickedButton5()//tui
 	if (str[diDian][changCi][xuanWei - 1] == '1')
 	{
 		str[diDian][changCi][xuanWei-1] = 't';
+		MessageBox(_T("已发送退票请求！"));
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save();
 		OnBnClickedButton1();
 	}
 	else
@@ -310,6 +492,7 @@ void 座位详情页::OnBnClickedButton5()//tui
 }
 void 座位详情页::OnBnClickedButton4()//ding
 {
+	if (www)
 	UpdateData(TRUE);
 	if (flag == 1)
 	{
@@ -325,6 +508,16 @@ void 座位详情页::OnBnClickedButton4()//ding
 	if (str[diDian][changCi][xuanWei - 1] != '1')
 	{
 		str[diDian][changCi][xuanWei-1] = '1';
+		if (flag == 1)
+		{
+			if (x = 1)
+				strcpy(fileDizhi, "res\\mv1.ini");
+			if (x == 2)
+				strcpy(fileDizhi, "res\\mv2.ini");
+			if (x == 3)
+				strcpy(fileDizhi, "res\\mv3.ini");
+		}
+		save();
 		OnBnClickedButton1();
 	}
 	else
@@ -344,4 +537,14 @@ void 座位详情页::OnBnClickedButton2()
 	comKou.put_InputLen(0);
 	comKou.put_RThreshold(1);
 	comKou.put_PortOpen(1);
+	OnBnClickedButton1();
+	MessageBox(_T("通信开启！"));
+}
+
+
+void 座位详情页::OnBnClickedButton6()
+{
+	// TODO:  在此添加控件通知处理程序代码
+	comKou.put_PortOpen(0);
+	MessageBox(_T("通信中断！"));
 }
